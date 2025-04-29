@@ -12,7 +12,12 @@ public class JavaExercises {
      * The first row contains 1 star, the second 2 stars, and so on.
      */
     public static void starTriangle() {
-        // TODO: Fill in this function
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
     }
 
     /**
@@ -20,7 +25,14 @@ public class JavaExercises {
      * Example: printIndexed("hello") -> h4e3l2l1o0
      */
     public static void printIndexed(String s) {
-        // TODO: Fill in this function
+        int i = 0;
+        int length = s.length();
+        while (length != 0) {
+            char a = s.charAt(i);
+            System.out.print(a + "" + length);
+            length -= 1;
+            i += 1;
+        }
     }
 
     /**
@@ -28,10 +40,14 @@ public class JavaExercises {
      * Example: stutter("hello") -> "hheelllloo"
      */
     public static String stutter(String s) {
-        // TODO: Fill in this function
-        return null;
+        int length = s.length();
+        String result = "";
+        for (int i = 0; i < length; i++) {
+            char a = s.charAt(i);
+            result = result + a + "" + a;
+        }
+        return result;
     }
-
     /**
      * Determines the quadrant of a Cartesian coordinate (x, y).
      * Returns:
@@ -42,7 +58,15 @@ public class JavaExercises {
      *   0 if the point lies on an axis.
      */
     public static int quadrant(int x, int y) {
-        // TODO: Fill in this function
+        if (x > 0 && y > 0){
+            return 1;
+        } else if (x < 0 && y > 0) {
+            return 2;
+        } else if (x < 0 && y < 0) {
+            return 3;
+        } else if (x > 0 && y < 0) {
+            return 4;
+        }
         return 0;
     }
 
