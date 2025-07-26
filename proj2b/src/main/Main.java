@@ -3,6 +3,7 @@ package main;
 import browser.NgordnetServer;
 import demo.DummyHistoryHandler;
 import demo.DummyHistoryTextHandler;
+import ngrams.NGramMap;
 import org.slf4j.LoggerFactory;
 
 public class Main {
@@ -36,11 +37,12 @@ public class Main {
     }
     public static void main(String[] args) {
         NgordnetServer hns = new NgordnetServer();
-
+        myGraph dataset = new myGraph(LARGE_SYNSET_FILE, LARGE_HYPONYM_FILE);
+        NGramMap ngram = new NGramMap(SMALL_WORDS_FILE, TOTAL_COUNTS_FILE);
         hns.startUp();
-        hns.register("history", new DummyHistoryHandler());
-        hns.register("historytext", new DummyHistoryTextHandler());
-        hns.register("hyponyms", new HyponymsHandler());
+        hns.register("history", new HistoryHandler(ngram));
+        hns.register("historytext", new HistoryTextHandler(ngram));
+        hns.register("hyponyms", new HyponymsHandler(dataset, ngram));
 
         System.out.println("Finished server startup! Visit http://localhost:4567/ngordnet.html");
     }

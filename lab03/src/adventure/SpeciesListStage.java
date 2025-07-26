@@ -18,8 +18,7 @@ public class SpeciesListStage implements AdventureStage {
             "squirrels",    // Java: The Good Parts
             "hummingbirds"  // Better, Faster, Lighter Java
     );
-    private static final List<String> REFERENCE_3 = new ArrayList<>();
-
+    private static final List<String> REFERENCE_3 = new ArrayList<>(List.of("leopards", "bison", "squirrels", "hummingbirds"));
     private final In in;
     private final Map<String, AdventureStage> responses;
 
